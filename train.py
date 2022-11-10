@@ -20,8 +20,8 @@ TRAIN_PATH = "data/train.tfrecord"
 
 # %% LOAD DATA
 if USE_MIXED_PRECISION:
-    policy = tf.keras.mixed_precision.experimental.Policy("mixed_float16")
-    tf.keras.mixed_precision.experimental.set_policy(policy)
+    policy = tf.keras.mixed_precision.Policy("mixed_float16")
+    tf.keras.mixed_precision.set_global_policy(policy)
     BATCH_SIZE_PER_DEVICE = BATCH_SIZE_PER_DEVICE * 2
     print("Computation dtype:", policy.compute_dtype)
     print("Variable dtype:", policy.variable_dtype)
