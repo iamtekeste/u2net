@@ -9,8 +9,8 @@ from data.tf_record import tf_serialize_tensor_example
 
 RESIZE_SHAPE = (320, 320)
 
-IMG_PATH = "/home/crr/datasets/duts/DUTS-TR/DUTS-TR-Image"
-MASK_PATH = "/home/crr/datasets/duts/DUTS-TR/DUTS-TR-Mask"
+IMG_PATH = "data/original"
+MASK_PATH = "data/mask"
 # IMG_PATH = "/home/crr/datasets/duts/DUTS-TE/DUTS-TE-Image"
 # MASK_PATH = "/home/crr/datasets/duts/DUTS-TE/DUTS-TE-Mask"
 
@@ -26,8 +26,8 @@ td = td.map(tf_serialize_tensor_example)
 td = td.prefetch(-1)
 
 # %%
-output_record = "/home/crr/datasets/duts/DUTS-TR/train.tfrecord"
-# output_record = "/home/crr/datasets/duts/DUTS-TE/test.tfrecord"
+output_record = "data/train.tfrecord"
+# test_record = "/home/crr/datasets/duts/DUTS-TE/test.tfrecord"
 
 writer = tf.data.experimental.TFRecordWriter(output_record)
 writer.write(td)

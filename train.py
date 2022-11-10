@@ -15,7 +15,7 @@ RESIZE_SHAPE = (320, 320)
 CROP_SIZE = (288, 288)
 BATCH_SIZE_PER_DEVICE = 36
 
-TRAIN_PATH = "/home/crr/datasets/duts/DUTS-TR/train.tfrecord"
+TRAIN_PATH = "data/train.tfrecord"
 TEST_PATH = "/home/crr/datasets/duts/DUTS-TE/test.tfrecord"
 
 # %% LOAD DATA
@@ -96,4 +96,4 @@ hist = u2net.fit(train_td,
 u2net.save(os.path.join(weights_dir, "model.h5"))
 u2net.save_weights(os.path.join(weights_dir, "latest_weights.h5"))
 
-u2net.evaluate(test_td)
+# u2net.evaluate(test_td)
