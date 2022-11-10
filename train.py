@@ -16,7 +16,7 @@ CROP_SIZE = (288, 288)
 BATCH_SIZE_PER_DEVICE = 36
 
 TRAIN_PATH = "data/train.tfrecord"
-TEST_PATH = "/home/crr/datasets/duts/DUTS-TE/test.tfrecord"
+# TEST_PATH = "/home/crr/datasets/duts/DUTS-TE/test.tfrecord"
 
 # %% LOAD DATA
 if USE_MIXED_PRECISION:
@@ -41,10 +41,10 @@ train_td = train_td.map(partial(augment, crop_size=CROP_SIZE, seed=42), num_para
 train_td = train_td.repeat(-1)
 train_td = train_td.prefetch(-1)
 
-test_td = tf.data.TFRecordDataset(TEST_PATH, num_parallel_reads=-1)
-test_td = test_td.batch(global_batch_size)
-test_td = test_td.map(batch_deserialize_tensor_example_float32)
-test_td = test_td.prefetch(-1)
+# test_td = tf.data.TFRecordDataset(TEST_PATH, num_parallel_reads=-1)
+# test_td = test_td.batch(global_batch_size)
+# test_td = test_td.map(batch_deserialize_tensor_example_float32)
+# test_td = test_td.prefetch(-1)
 
 # %% MAKE MODEL
 with strategy.scope():
